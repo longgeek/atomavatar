@@ -157,14 +157,8 @@ const methods = {
                     this.loading = false;
                     return;
                 }
-                this.$bvToast.toast(
-                    '恭喜，成功注册账号 3 秒后将跳转到登录页面',
-                    { title: '注册成功', variant: 'danger', toaster: 'b-toaster-bottom-right' }
-                );
                 this.loading = false;
-                this.__SLEEP__(3000).then(() => {
-                    this.$router.push({ name: 'login', query: this.$route.query });
-                })
+                this.$router.push({ name: 'register_success', query: this.$route.query });
             }).catch((error) => {
                 this.$bvToast.toast(error, {
                     title: '注册异常', variant: 'danger', toaster: 'b-toaster-bottom-right'
