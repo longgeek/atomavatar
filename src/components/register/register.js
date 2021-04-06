@@ -138,6 +138,13 @@ const methods = {
             params.enterpriseBusinessLicense = {items: this.authCompany.businessLicenseFiles};
         }
 
+        // 如果有来源为 AD，需要给后端传递 _source 和 _query 两个参数
+        // 后端需要记录日志
+        if (this.$route.query.hmcu == 'ad' && this.$route.query.custom_url) {
+            params['_source'] = 'ad';
+            params['_query'] = this.$route.query;
+        }
+
         // 判断注册账号是手机或邮箱
         if (this.auth.name.indexOf('@') !== -1) {
             url = this.__API__.register.registerByEmailCode();
@@ -158,6 +165,13 @@ const methods = {
                     return;
                 }
                 this.loading = false;
+
+                // 来源为 AD 需要跳转到 URL 中的 custom_url
+                if (this.$route.query.hmcu == 'ad' && this.$route.query.custom_url) {
+                    window.location.href = this.$route.query.custom_url;
+                    return;
+                }
+
                 this.$router.push({ name: 'register_success', query: this.$route.query });
             }).catch((error) => {
                 this.$bvToast.toast(error, {

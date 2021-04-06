@@ -70,14 +70,23 @@ const methods = {
      *  登录成功后写入用户信息到 local Storage 中
      */
     submitAPI() {
+        const params = {
+            loginName: this.login.name,
+            password: this.login.password,
+            imageCode: this.login.captcha,
+            captchaToken: this.captchaToken,
+        };
+
+        // 如果有来源为 AD，需要给后端传递 _source 和 _query 两个参数
+        // 后端需要记录日志
+        if (this.$route.query.hmcu == 'ad' && this.$route.query.custom_url) {
+            params['_source'] = 'ad';
+            params['_query'] = this.$route.query;
+        }
+
         api.postJsonApi(
             this.__API__.login.loginByPassword(),
-            {
-                loginName: this.login.name,
-                password: this.login.password,
-                imageCode: this.login.captcha,
-                captchaToken: this.captchaToken,
-            }
+            params
         )
         .then((response) => {
             if (response.data.code === 200) {
@@ -98,6 +107,12 @@ const methods = {
 
                 this.$store.commit("setUserSession", user);
                 this.$store.commit("setToken", response.data.data.token);
+
+                // 来源为 AD 需要跳转到 URL 中的 custom_url
+                if (this.$route.query.hmcu == 'ad' && this.$route.query.custom_url) {
+                    window.location.href = this.$route.query.custom_url;
+                    return;
+                }
 
                 // OIDC 方式
                 if (this.$route.query.redirect_oidc) {
