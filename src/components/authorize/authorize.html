@@ -1,0 +1,94 @@
+<div class="account-pages my-5 pt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-5">
+                <div class="authorize-title">
+                    <div>
+                        <div class="d-flex">
+                            <!-- div class="source-application" style="background-color:#ffffff">
+                                <img src="https://tvax2.sinaimg.cn/crop.0.0.751.751.180/0067ypLLly8gln6ijk2a3j60kv0kvaao02.jpg?KID=imgbed,tva&Expires=1616478078&ssig=6cVqpM1j%2BN" height="50" width="50" alt="">
+                            </div -->
+                            <div class="avatar-md mr-3 inline-block z-index-2">
+                                <span class="avatar-title rounded-circle bg-soft-info font-size-18">
+                                    <span v-if="appName">{{ appName[0] }}</span>
+                                    <span v-else>未知应用</span>
+                                </span>
+                            </div>
+                            <div class="middle-point">
+                                <span class="mdi mdi-check check"></span>
+                            </div>
+                            <div class="to-openatom">
+                                <img class="rounded-circle" src="https://tvax3.sinaimg.cn/crop.0.0.360.360.180/008bei33ly8gilimvri1gj30a00a0mx4.jpg?KID=imgbed,tva&Expires=1616413750&ssig=t3GQPTvoW%2B" height="76" width="76" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h5 class="text-center mb-4">
+                    <font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">开放原子开源基金会，授权 "应用"</font>
+                    </font>
+                </h5>
+                <div class="card overflow-hidden mt-8">
+                    <div class="card-body pt-0 mt-6">
+                        <div class="p-2">
+                            <div class="media mb-4">
+                                <div class="mr-3">
+                                    <div class="avatar-xs inline-block">
+                                        <span class="avatar-title rounded-circle bg-soft-info font-size-12 font-weight-400">
+                                            <span v-if="appName">{{ appName[0] }}</span>
+                                            <span v-else>未</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="font-size-13 mb-1">{{ appName }}</h5>
+                                    <p class="text-muted mb-1">来自于
+                                    <span v-if="appName" class="text-info">{{ appName }}</span>
+                                    <span v-else class="text-warning">"未知"</span>
+                                    应用将访问你的账户</p>
+                                </div>
+                            </div>
+                            <div class="media mb-6">
+                                <div class="mr-3">
+                                    <div class="media-object rounded-circle avatar-xs" style="background-size: 100%; background-image: url('data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9JzMwMHB4JyB3aWR0aD0nMzAwcHgnICBmaWxsPSIjMjA0MDU1IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTAwIDEwMDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxnPjxwYXRoIGQ9Ik01MCw1MC41YzEwLjYsMCwxOS4yLTguNiwxOS4yLTE5LjJTNjAuNiwxMi4yLDUwLDEyLjJzLTE5LjIsOC42LTE5LjIsMTkuMlMzOS40LDUwLjUsNTAsNTAuNXogTTUwLDE1LjkgICBjOC41LDAsMTUuNCw2LjksMTUuNCwxNS40UzU4LjUsNDYuNyw1MCw0Ni43cy0xNS40LTYuOS0xNS40LTE1LjRTNDEuNSwxNS45LDUwLDE1Ljl6Ij48L3BhdGg+PHBhdGggZD0iTTUwLDU1LjFjLTIuMSwwLTQuMiwwLjItNi4yLDAuNmMtNy4zLDEuNC0xMy45LDUuMy0xOC43LDEwLjljLTUsNS45LTcuOCwxMy40LTcuOCwyMS4ySDIxYzAtNi45LDIuNS0xMy41LDYuOS0xOC44ICAgYzQuMy01LDEwLjEtOC40LDE2LjYtOS43YzEuOC0wLjMsMy43LTAuNSw1LjUtMC41YzE2LDAsMjksMTMsMjksMjloMy44QzgyLjgsNjkuOCw2OC4xLDU1LjEsNTAsNTUuMXoiPjwvcGF0aD48L2c+PC9zdmc+');"></div>
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="font-size-13 mb-1">个人用户数据</h5>
+                                    <p class="text-muted mb-3">此应用程序将能够读取你的个人个人资料信息，如下：</p>
+                                    <div class="text-muted">
+                                        <div class="mb-1"><i class="mdi mdi-chevron-right text-muted mr-1"></i>用户名（只读）</div>
+                                        <div class="mb-1"><i class="mdi mdi-chevron-right text-muted mr-1"></i>邮箱地址（只读）</div>
+                                        <div class="mb-1"><i class="mdi mdi-chevron-right text-muted mr-1"></i>个人信息（只读）</div>
+                                    </div>
+                                    <!-- a class="mt-2">
+                                        <i class="mdi mdi-crosshairs-question mr-1"></i>了解更多
+                                    </a -->
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row mt-6">
+                                <div class="col-lg-6">
+                                    <button type="button" class="btn btn-secondary btn-block" @click="cancel">取消</button>
+                                </div>
+                                <div class="col-lg-6">
+                                    <button type="button" class="btn btn-primary btn-block" @click="confirm" :disabled="loading">授权</button>
+                                </div>
+                                <div class="col-lg-12" v-if="redirectUri">
+                                    <div class="text-center mt-6">
+                                        授权将重定向到
+                                        <br>
+                                        <div class="text-muted mt-2">{{ redirectUri }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-11 text-center">
+                    <!-- p><a href="/auth/register-1" class="font-weight-medium text-primary">申请 OAuth</a></p -->
+                    <p>© 2021 OpenAtom.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,283 @@
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #204055;
+    text-align: left;
+    background-color: #f6f9fc;
+    -webkit-font-smoothing: auto;
+}
+hr {
+    border-color: rgb(223 236 249);
+}
+.text-info {
+    color: $info !important;
+}
+.text-danger {
+    color: $danger !important;
+}
+.text-primary {
+    color: $info !important;
+}
+.text-center {
+    text-align: center !important;
+}
+.text-muted {
+    color: #74788d !important;
+}
+.text-warning {
+    color: $warning !important;
+}
+
+.theme--light.v-application {
+    background: #f6f9fc;
+    color: #204055;
+}
+.v-application {
+    font-family: "Poppins", sans-serif;
+    line-height: 1.5;
+}
+
+.justify-content-center {
+    -webkit-box-pack: center !important;
+    -ms-flex-pack: center !important;
+    justify-content: center !important;
+}
+
+.card {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid #f6f6f6;
+    border-radius: 7px;
+}
+.card {
+    margin-bottom: 24px;
+    box-shadow: 0 0.75rem 1.5rem rgb(158 158 158 / 34%);
+}
+.card-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+}
+.overflow-hidden {
+    overflow: hidden !important;
+}
+.bg-soft-primary {
+    background-color: rgba(0, 128, 255, 0.25) !important;
+}
+.align-self-end {
+    -ms-flex-item-align: end !important;
+    align-self: flex-end !important;
+}
+.p-2 {
+    padding: 0.5rem !important;
+}
+.p-4 {
+    padding: 1.5rem !important;
+}
+.pt-0 {
+    padding-top: 0px !important;
+}
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+h5, .h5 {
+    font-size: 1rem;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+.profile-user-wid {
+    margin-top: -26px;
+}
+.avatar-md {
+    height: 4.5rem;
+    width: 4.5rem;
+}
+.avatar-title {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: #0080ff;
+    color: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-weight: 500;
+    height: 100%;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 100%;
+    box-shadow: 0 0.75rem 1.5rem rgb(158 158 158 / 34%);
+}
+.rounded-circle {
+    border-radius: 50% !important;
+}
+.bg-light {
+    background-color: #fff !important;
+}
+.form-group {
+    margin-bottom: 1rem;
+}
+label {
+    font-weight: 500;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.94rem + 2px);
+    padding: 0.47rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #e0ecf9;
+    border-radius: 3px;
+    box-shadow: none;
+    -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+.custom-control {
+    position: relative;
+    display: block;
+    min-height: 1.2rem;
+}
+form input[type='radio'], form input[type='checkbox'] {
+    width: 14px;
+    height: 14px;
+}
+.form-control:focus {
+    outline: 0;
+    border-color: #0080ff;
+}
+.custom-control-input {
+    left: 0;
+    z-index: -1;
+    width: 1rem;
+    height: 1.1rem;
+}
+.custom-control-label {
+    position: relative;
+    margin-bottom: 0;
+    vertical-align: top;
+}
+
+.btn-primary {
+    color: #FFFFFF;
+    border-color: #0080ff;
+    background-color: #0080ff;
+}
+.btn {
+    font-weight: 600;
+    background: none;
+    font-size: 12px;
+    padding: 8px 10px;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border-radius: 3px;
+}
+.btn:focus {
+    outline: 0;
+}
+.btn-block {
+    display: block;
+    width: 100%;
+}
+.btn-primary {
+    color: #fff;
+    background: #0080ff -webkit-gradient(linear, left top, left bottom, from(#2592ff), to(#0080ff)) repeat-x;
+    background: #0080ff linear-gradient(180deg , #2592ff, #0080ff) repeat-x;
+    border: 1px solid #0080ff;
+    -webkit-box-shadow: inset 0 1px 0 rgb(255 255 255 / 15%), 0 1px 1px rgb(0 0 0 / 8%);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 15%), 0 1px 1px rgb(0 0 0 / 8%);
+}
+.btn-secondary {
+    color: #204055;
+    border: 1px solid #e0ecf9;
+    background-color: #f6f9fc;
+}
+.btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active, .btn-secondary.active .btn-secondary:active:focus, .btn-secondary:active:hover, .btn-secondary.active:hover, .btn-secondary.active:focus, .btn-outline-secondary:hover, .btn-outline-secondary:focus, .btn-outline-secondary:active, .btn-outline-secondary.active .btn-outline-secondary:active:focus, .btn-outline-secondary:active:hover, .btn-outline-secondary.active:hover, .btn-outline-secondary.active:focus {
+    color: #204055;
+    border-color: #e0ecf9;
+    background-color: #ebf1f8;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active .btn-primary:active:focus, .btn-primary:active:hover, .btn-primary.active:hover, .btn-primary.active:focus {
+    color: #FFFFFF;
+    background-color: #0078f0;
+    border-color: #0078f0;
+}
+.media {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+.media-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+.avatar-xs {
+    height: 2rem;
+    width: 2rem;
+}
+.font-size-12 {
+    font-size: 12px !important;
+}
+.font-size-13 {
+    font-size: 13px !important;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.font-weight-400 {
+    font-weight: 400;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.display-none {
+    display: none;
+}
+
+.max-width-percentage-30 {
+    max-width: 30%;
+}
+
+.btn.is-invalid {
+    border-color: #f7b5b0 !important;
+}
+
+.z-index-2 {
+    z-index: 2;
+}

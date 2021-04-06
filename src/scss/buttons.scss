@@ -1,0 +1,182 @@
+//
+// _buttons.scss
+//
+button,a {
+  outline: none !important;
+}
+
+// Rounded Buttons
+.btn-rounded {
+  border-radius: 30px;
+}
+
+.btn:focus, .btn.focus {
+  box-shadow: none !important;
+}
+
+.btn {
+  font-size: 12px;
+  padding: 7px 10px;
+  box-shadow: none !important;
+  border-radius: 3px;
+}
+
+button:focus {
+  outline: 0;
+}
+
+// btn-primary
+.btn-primary {
+  color: #FFFFFF;
+  border-color: $primary;
+  background: $primary;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active .btn-primary:active:focus, .btn-primary:active:hover, .btn-primary.active:hover, .btn-primary.active:focus, .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+  color: #FFFFFF;
+  background: darken($primary, 3%);
+  border-color: darken($primary, 3%);
+}
+
+.btn.disabled, .btn[disabled] {
+    cursor: no-drop;
+}
+
+.btn-primary.disabled, .btn-primary.disabled:hover, .btn-primary.disabled:focus, .btn-primary.disabled:active, .btn-primary.disabled.active, .btn-primary[disabled], .btn-primary[disabled]:hover, .btn-primary[disabled]:focus, .btn-primary[disabled]:active, .btn-primary.active[disabled], fieldset[disabled] .btn-primary, fieldset[disabled] .btn-primary:hover, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary:active, fieldset[disabled] .btn-primary.active {
+  border-color: darken($primary, 4%);
+  background: darken($primary, 4%);
+}
+
+// btn-secondary
+.btn-secondary,
+.btn-outline-secondary {
+  color: $text-color;
+  border-color: #e0ecf9;
+  background: $secondary;
+}
+.btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active, .btn-secondary.active .btn-secondary:active:focus, .btn-secondary:active:hover, .btn-secondary.active:hover, .btn-secondary.active:focus, .btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled).active, .show > .btn-secondary.dropdown-toggle,
+.btn-outline-secondary:hover, .btn-outline-secondary:focus, .btn-outline-secondary:active, .btn-outline-secondary.active .btn-outline-secondary:active:focus, .btn-outline-secondary:active:hover, .btn-outline-secondary.active:hover, .btn-outline-secondary.active:focus, .btn-outline-secondary:not(:disabled):not(.disabled):active, .btn-outline-secondary:not(:disabled):not(.disabled).active, .show > .btn-outline-secondary.dropdown-toggle {
+  color: $text-color;
+  border-color: #e0ecf9;
+  background: darken($secondary, 3%);
+}
+.btn-secondary.disabled, .btn-secondary.disabled:hover, .btn-secondary.disabled:focus, .btn-secondary.disabled:active, .btn-secondary.disabled.active, .btn-secondary[disabled], .btn-secondary[disabled]:hover, .btn-secondary[disabled]:focus, .btn-secondary[disabled]:active, .btn-secondary.active[disabled], fieldset[disabled] .btn-secondary, fieldset[disabled] .btn-secondary:hover, fieldset[disabled] .btn-secondary:focus, fieldset[disabled] .btn-secondary:active, fieldset[disabled] .btn-secondary.active,
+.btn-outline-secondary.disabled, .btn-outline-secondary.disabled:hover, .btn-outline-secondary.disabled:focus, .btn-outline-secondary.disabled:active, .btn-outline-secondary.disabled.active, .btn-outline-secondary[disabled], .btn-outline-secondary[disabled]:hover, .btn-outline-secondary[disabled]:focus, .btn-outline-secondary[disabled]:active, .btn-outline-secondary.active[disabled], fieldset[disabled] .btn-outline-secondary, fieldset[disabled] .btn-outline-secondary:hover, fieldset[disabled] .btn-outline-secondary:focus, fieldset[disabled] .btn-outline-secondary:active, fieldset[disabled] .btn-outline-secondary.active {
+  border-color: darken($secondary, 4%);
+  background: darken($secondary, 4%);
+}
+
+// btn-success
+.btn-success {
+  color: #FFFFFF;
+  border-color: $success;
+  background: $success;
+}
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active .btn-success:active:focus, .btn-success:active:hover, .btn-success.active:hover, .btn-success.active:focus, .btn-success:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled).active, .show > .btn-success.dropdown-toggle {
+  color: #FFFFFF;
+  border-color: darken($success, 3%);
+  background: darken($success, 3%);
+}
+.btn-success.disabled, .btn-success.disabled:hover, .btn-success.disabled:focus, .btn-success.disabled:active, .btn-success.disabled.active, .btn-success[disabled], .btn-success[disabled]:hover, .btn-success[disabled]:focus, .btn-success[disabled]:active, .btn-success.active[disabled], fieldset[disabled] .btn-success, fieldset[disabled] .btn-success:hover, fieldset[disabled] .btn-success:focus, fieldset[disabled] .btn-success:active, fieldset[disabled] .btn-success.active {
+  border-color: lighten($success, 4%);
+  background: lighten($success, 4%);
+}
+
+// btn-info
+.btn-info {
+  color: #FFFFFF;
+  border-color: $info;
+  background: $info;
+}
+.btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active .btn-info:active:focus, .btn-info:active:hover, .btn-info.active:hover, .btn-info.active:focus, .btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled).active, .show > .btn-info.dropdown-toggle {
+  color: #FFFFFF;
+  border-color: darken($info, 3%);
+  background: darken($info, 3%);
+}
+.btn-info.disabled, .btn-info.disabled:hover, .btn-info.disabled:focus, .btn-info.disabled:active, .btn-info.disabled.active, .btn-info[disabled], .btn-info[disabled]:hover, .btn-info[disabled]:focus, .btn-info[disabled]:active, .btn-info.active[disabled], fieldset[disabled] .btn-info, fieldset[disabled] .btn-info:hover, fieldset[disabled] .btn-info:focus, fieldset[disabled] .btn-info:active, fieldset[disabled] .btn-info.active {
+  border-color: lighten($info, 4%);
+  background: lighten($info, 4%);
+}
+
+// btn-warning
+.btn-warning {
+  color: #FFFFFF;
+  border-color: $warning;
+  background: $warning;
+}
+.btn-warning:hover, .btn-warning:focus, .btn-warning:active, .btn-warning.active .btn-warning:active:focus, .btn-warning:active:hover, .btn-warning.active:hover, .btn-warning.active:focus, .btn-warning:not(:disabled):not(.disabled):active, .btn-warning:not(:disabled):not(.disabled).active, .show > .btn-warning.dropdown-toggle {
+  color: #FFFFFF;
+  border-color: darken($warning, 3%);
+  background: darken($warning, 3%);
+}
+.btn-warning.disabled, .btn-warning.disabled:hover, .btn-warning.disabled:focus, .btn-warning.disabled:active, .btn-warning.disabled.active, .btn-warning[disabled], .btn-warning[disabled]:hover, .btn-warning[disabled]:focus, .btn-warning[disabled]:active, .btn-warning.active[disabled], fieldset[disabled] .btn-warning, fieldset[disabled] .btn-warning:hover, fieldset[disabled] .btn-warning:focus, fieldset[disabled] .btn-warning:active, fieldset[disabled] .btn-warning.active {
+  border-color: lighten($warning, 4%);
+  background: lighten($warning, 4%);
+}
+
+// btn-danger
+.btn-danger {
+  color: #FFFFFF;
+  border-color: $danger;
+  background: $danger;
+}
+.btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active .btn-danger:active:focus, .btn-danger:active:hover, .btn-danger.active:hover, .btn-danger.active:focus, .btn-danger:not(:disabled):not(.disabled):active, .btn-danger:not(:disabled):not(.disabled).active, .show > .btn-danger.dropdown-toggle {
+  color: #FFFFFF;
+  border-color: darken($danger, 3%);
+  background: darken($danger, 3%);
+}
+.btn-danger.disabled, .btn-danger.disabled:hover, .btn-danger.disabled:focus, .btn-danger.disabled:active, .btn-danger.disabled.active, .btn-danger[disabled], .btn-danger[disabled]:hover, .btn-danger[disabled]:focus, .btn-danger[disabled]:active, .btn-danger.active[disabled], fieldset[disabled] .btn-danger, fieldset[disabled] .btn-danger:hover, fieldset[disabled] .btn-danger:focus, fieldset[disabled] .btn-danger:active, fieldset[disabled] .btn-danger.active {
+  border-color: lighten($danger, 4%);
+  background: lighten($danger, 4%);
+}
+
+// btn-dark
+.btn-dark {
+  color: #FFFFFF;
+  border-color: $dark;
+  background: $dark;
+}
+.btn-dark:hover, .btn-dark:focus, .btn-dark:active, .btn-dark.active .btn-dark:active:focus, .btn-dark:active:hover, .btn-dark.active:hover, .btn-dark.active:focus, .btn-dark:not(:disabled):not(.disabled):active, .btn-dark:not(:disabled):not(.disabled).active, .show > .btn-dark.dropdown-toggle {
+  color: #FFFFFF;
+  border-color: darken($dark, 3%);
+  background: darken($dark, 3%);
+}
+.btn-dark.disabled, .btn-dark.disabled:hover, .btn-dark.disabled:focus, .btn-dark.disabled:active, .btn-dark.disabled.active, .btn-dark[disabled], .btn-dark[disabled]:hover, .btn-dark[disabled]:focus, .btn-dark[disabled]:active, .btn-dark.active[disabled], fieldset[disabled] .btn-dark, fieldset[disabled] .btn-dark:hover, fieldset[disabled] .btn-dark:focus, fieldset[disabled] .btn-dark:active, fieldset[disabled] .btn-dark.active {
+  border-color: lighten($dark, 0.2%);
+  background: lighten($dark, 0.2%);
+}
+
+// btn-light
+.btn-light {
+  color: $text-color;
+  border: 1px solid $text-color;
+  background: $light;
+}
+.btn-light:hover, .btn-light:focus, .btn-light:active, .btn-light.active .btn-light:active:focus, .btn-light:active:hover, .btn-light.active:hover, .btn-light.active:focus, .btn-light:not(:disabled):not(.disabled):active, .btn-light:not(:disabled):not(.disabled).active, .show > .btn-light.dropdown-toggle {
+  color: $text-color;
+  border-color: lighten($text-color, 10%);
+  background: $light;
+}
+.btn-light.disabled, .btn-light.disabled:hover, .btn-light.disabled:focus, .btn-light.disabled:active, .btn-light.disabled.active, .btn-light[disabled], .btn-light[disabled]:hover, .btn-light[disabled]:focus, .btn-light[disabled]:active, .btn-light.active[disabled], fieldset[disabled] .btn-light, fieldset[disabled] .btn-light:hover, fieldset[disabled] .btn-light:focus, fieldset[disabled] .btn-light:active, fieldset[disabled] .btn-light.active {
+  border-color: lighten($light, 4%);
+  background: lighten($light, 4%);
+}
+
+// btn-white
+.btn-white {
+  color: $text-color;
+  border: 1px solid #e1ecf9;
+  background: #fff;
+}
+.btn-white:hover, .btn-white:focus, .btn-white:active, .btn-white.active .btn-white:active:focus, .btn-white:active:hover, .btn-white.active:hover, .btn-white.active:focus, .btn-white:not(:disabled):not(.disabled):active, .btn-white:not(:disabled):not(.disabled).active, .show > .btn-white.dropdown-toggle {
+  color: $text-color;
+  border-color: #e0ecf9;
+  background: darken($secondary, 3%);
+}
+.btn-white.disabled, .btn-white.disabled:hover, .btn-white.disabled:focus, .btn-white.disabled:active, .btn-white.disabled.active, .btn-white[disabled], .btn-white[disabled]:hover, .btn-white[disabled]:focus, .btn-white[disabled]:active, .btn-white.active[disabled], fieldset[disabled] .btn-white, fieldset[disabled] .btn-white:hover, fieldset[disabled] .btn-white:focus, fieldset[disabled] .btn-white:active, fieldset[disabled] .btn-white.active {
+  border-color: lighten($secondary, 4%);
+  background: lighten($secondary, 4%);
+}
+
+.btn.btn-sm {
+    padding: 2px 8px;
+}

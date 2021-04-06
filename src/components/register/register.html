@@ -1,0 +1,212 @@
+<div class="account-pages my-5 pt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4 col-sm-6">
+                <div class="text-center mt-6">
+                    <a href="/">
+                        <div class="avatar-md profile-user-wid mb-4">
+                            <span class="avatar-title rounded-circle bg-light">
+                                <img
+                                    alt="" height="76" class="rounded-circle"
+                                    src="https://tvax3.sinaimg.cn/crop.0.0.360.360.180/008bei33ly8gilimvri1gj30a00a0mx4.jpg?KID=imgbed,tva&Expires=1616413750&ssig=t3GQPTvoW%2B"
+                                />
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <div class="text-center mt-2">
+                    <h5>开放原子开源基金会</h5>
+                </div>
+                <div class="card overflow-hidden mt-8">
+                    <div class="card-body pt-0 mt-8">
+                        <h5 class="text-center text-primary mb-2" v-if="!errorMsg">用户注册</h5>
+                        <p class="text-center text-danger mb-2" v-else>{{ errorMsg }}</p>
+                        <div class="p-2">
+                            <form class="form-horizontal needs-validation" @submit.stop.prevent="submit">
+                                <div class="form-group mt-3">
+                                    <label
+                                        class="inline mr-6 mb-0"
+                                        :class="{'text-primary': auth.type == 'personal'}"
+                                    >
+                                        <input
+                                            type="radio"
+                                            class="mr-2"
+                                            v-model="auth.type"
+                                            value="personal"
+                                            id="personal"
+                                        />
+                                        <label class="mb-0" for="personal">个人用户</label>
+                                    </label>
+                                    <label
+                                        class="inline mb-0"
+                                        :class="{'text-primary': auth.type == 'enterprise'}"
+                                    >
+                                        <input
+                                            type="radio"
+                                            class="mr-2"
+                                            v-model="auth.type"
+                                            value="enterprise"
+                                            id="enterprise"
+                                        />
+                                        <label class="mb-0" for="enterprise">企业用户</label>
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <input
+                                        ref="autofocus"
+                                        class="form-control"
+                                        v-model="auth.name"
+                                        maxlength="30"
+                                        placeholder="手机号或邮箱"
+                                        :class="{'is-invalid':
+                                                    (submitted && $v.auth.name.$error) ||
+                                                    submitted &&
+                                                    !isPhone(this.auth.name) &&
+                                                    !isEmail(this.auth.name)
+                                        }"
+                                    />
+                                </div>
+                                <div class="form-group position-relative">
+                                    <input
+                                        style="width: 60%;"
+                                        type="text"
+                                        class="form-control"
+                                        autocomplete="off"
+                                        v-model="auth.captcha"
+                                        minlength="4"
+                                        maxlength="4"
+                                        placeholder="图片验证码"
+                                        :class="{ 'is-invalid': submitted && $v.auth.captcha.$error }"
+                                    />
+                                    <img
+                                        style="top: -10px;"
+                                        class="auth-captcha"
+                                        @click="getCaptcha"
+                                        :src="captcha"
+                                        v-if="!captchaLoading"
+                                    />
+                                </div>
+                                <div class="form-group position-relative">
+                                    <div role="group" class="input-group">
+                                        <input
+                                            class="form-control"
+                                            v-model="auth.msgCode"
+                                            minlength="6"
+                                            maxlength="6"
+                                            placeholder="请输入 6 位短信或邮箱验证码"
+                                            :class="{ 'is-invalid': submitted && $v.auth.msgCode.$error }"
+                                        />
+                                        <div class="input-group-append">
+                                            <button
+                                                v-if="msgCodeDisplay"
+                                                type="button"
+                                                class="btn btn-secondary font-weight-400"
+                                                @click="getMsgCode"
+                                            >
+                                                发送验证码
+                                            </button>
+                                            <button
+                                                v-else
+                                                disabled
+                                                type="button"
+                                                class="btn btn-secondary font-weight-400"
+                                            >
+                                                剩余 {{ msgCodeTimer }} 秒
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input
+                                        class="form-control"
+                                        v-model="auth.nickname"
+                                        placeholder="昵称，2-16 位字符"
+                                        minlength="2"
+                                        maxlength="16"
+                                        :class="{ 'is-invalid': submitted && $v.auth.nickname.$error }"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <input
+                                        type="password"
+                                        class="form-control"
+                                        autocomplete="off"
+                                        v-model="auth.password"
+                                        placeholder="密码，要求由 6-20 个英文字母和数字组合"
+                                        minlength="6"
+                                        maxlength="20"
+                                        :class="{ 'is-invalid': submitted && $v.auth.password.$error }"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <input
+                                        type="password"
+                                        class="form-control"
+                                        autocomplete="off"
+                                        v-model="auth.repeatPassword"
+                                        placeholder="再次输入密码"
+                                        minlength="6"
+                                        maxlength="20"
+                                        :class="{ 'is-invalid': submitted && $v.auth.repeatPassword.$error }"
+                                    />
+                                </div>
+                                <!-- 企业开发者注册 -->
+                                <div v-if="auth.type == 'enterprise'">
+                                    <div class="form-group">
+                                        <input
+                                            class="form-control"
+                                            v-model="authCompany.company"
+                                            placeholder="企业名称，例：北京xxx科技有限公司"
+                                            minlength="4"
+                                            maxlength="30"
+                                            :class="{ 'is-invalid': submitted && $v.authCompany.company.$error }"
+                                        />
+                                    </div>
+                                    <div class="form-group">
+                                        <div role="group" class="input-group">
+                                            <input
+                                                class="form-control"
+                                                v-model="authCompany.businessLicense"
+                                                placeholder="18 位企业社会信用代码"
+                                                minlength="18"
+                                                maxlength="18"
+                                                :class="{ 'is-invalid': submitted && $v.authCompany.businessLicense.$error }"
+                                            />
+                                            <div class="input-group-append">
+                                                <input
+                                                    type="file"
+                                                    id="business_license_images"
+                                                    v-show="false"
+                                                    @change="businessLicenseUpload"
+                                                />
+                                                <label
+                                                    for="business_license_images"
+                                                    class="btn btn-secondary font-weight-400 mb-0 pointer"
+                                                    :class="{ 'is-invalid z-index-2': submitted && $v.authCompany.businessLicenseFiles.$error }"
+                                                >
+                                                    {{ authCompany.businessLicenseFileNames.length > 0 ? authCompany.businessLicenseFileNames.join(', ') : '上传营业执照图片' }}
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-6">
+                                    <button type="submit" class="btn btn-primary btn-block" :disabled="loading">确认注册</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-11 text-center">
+                    <p>
+                        已有账号，
+                        <router-link :to="{name: 'login', query: $route.query}">
+                            <a class="font-weight-medium text-primary">去登录</a>
+                        </router-link>
+                    </p>
+                    <p> © 2021 OpenAtom. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

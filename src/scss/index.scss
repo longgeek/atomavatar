@@ -1,0 +1,12 @@
+// Basic CSS
+@import "vars.scss";
+@import "form.scss";
+@import "basic.scss";
+@import "login.scss";
+@import "margin.scss";
+@import "buttons.scss";
+@import "authorize.scss";
+
+// Plugins CSS
+@import "plugins/toaster.scss";
+@import "plugins/form-wizard.scss";

@@ -1,0 +1,127 @@
+.b-toaster {
+    top: 65px !important;
+    right: 15px !important;
+    min-width: 250px;
+
+    // 默认
+    .b-toast {
+        background: #fff;
+        border: 1px solid $dark;
+        border-radius: $border-radius;
+
+        .toast {
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+            backdrop-filter: none;
+            background: transparent;
+
+            .toast-header,
+            .toast-body {
+                border: none;
+                font-size: 12px;
+                line-height: 1.2;
+                background-color: transparent;
+            }
+
+            .toast-header {
+                padding: 0.75rem 1.25rem;
+                font-weight: 500;
+                color: $text-color;
+
+                .close {
+                    opacity: 0.5;
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: $text-color;
+                    margin-top: -3px;
+                    float: right;
+                }
+                .close:hover {
+                    opacity: 1;
+                }
+            }
+
+            .toast-body {
+                line-height: 1.5;
+                padding: 0 1.25rem 1.25rem;
+            }
+        }
+        .toast:focus {
+            outline: none;
+        }
+    }
+
+    // Primary
+    .b-toast.b-toast-primary {
+        border-color: $primary;
+        .toast {
+            color: $text-color;
+            .toast-header {
+                color: $primary;
+            }
+        }
+    }
+    // Secondary
+    .b-toast.b-toast-secondary {
+        background: $gray;
+        border-color: $text-color;
+        .toast {
+            color: $text-color;
+            .toast-header {
+                color: $text-color;
+            }
+        }
+    }
+    // Danger
+    .b-toast.b-toast-danger {
+        border-color: $danger;
+        .toast {
+            color: $text-color;
+            .toast-header {
+                color: $danger;
+            }
+        }
+    }
+    // Warning
+    .b-toast.b-toast-warning {
+        border-color: $warning;
+        .toast {
+            color: $text-color;
+            .toast-header {
+                color: $warning;
+            }
+        }
+    }
+    // Success
+    .b-toast.b-toast-success {
+        border-color: $success;
+        .toast {
+            color: $text-color;
+            .toast-header {
+                color: $success;
+            }
+        }
+    }
+    // Info
+    .b-toast.b-toast-info {
+        border-color: $info;
+        .toast {
+            color: $text-color;
+            .toast-header {
+                color: $info;
+            }
+        }
+    }
+
+}
+
+.b-toaster.b-toaster-bottom-right {
+    bottom: 10px;
+    top: auto !important;
+    position: fixed;
+}
+
+.b-toaster .b-toast {
+    margin-bottom: 10px;
+}
