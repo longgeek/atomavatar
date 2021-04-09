@@ -26,7 +26,16 @@ const methods = {
 
         // OIDC 方式
         if (this.$route.query.oidc_uid) {
-            axios.get(`http://192.168.1.141:3000/atom_services/oidc/interaction/${this.$route.query.oidc_uid}/confirm`)
+            axios.post(`/atom_services/oidc/interaction/${this.$route.query.oidc_uid}/confirm`,
+                {},
+                {
+                    headers: {
+                        token: localStorage.getItem('logintoken'),
+                        changeOrigin: true,
+                        'Access-Control-Allow-Credentials': true
+                    }
+                }                
+            )
                 .then(res =>{
                     if (res.data.code !== 200) {
                         this.$bvToast.toast(res.data.msg, {
@@ -35,6 +44,7 @@ const methods = {
                         this.loading = false;
                         return;
                     }
+                    window.location.href = res.data.data.redirectTo
             })
         } else {
             // OAuth 方式

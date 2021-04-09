@@ -7,7 +7,7 @@ import axios from "axios";
 import uuidv1 from "uuid/dist/v1";
 import { required, minLength, maxLength } from "vuelidate/lib/validators";
 
-const data = function() {
+const data = function () {
     return {
         login: {
             name: '',               // 手机号或邮箱
@@ -88,102 +88,124 @@ const methods = {
             this.__API__.login.loginByPassword(),
             params
         )
-        .then((response) => {
-            if (response.data.code === 200) {
-                let user = JSON.stringify({
-                    loginName: this.login.name,
-                    nickname: response.data.data.nickname || this.login.name,
-                    headImgUrl: response.data.data.headImageUrl,
-                    roleTypes: response.data.data.roleTypes,
-                });
+            .then((response) => {
+                if (response.data.code === 200) {
+                    let user = JSON.stringify({
+                        loginName: this.login.name,
+                        nickname: response.data.data.nickname || this.login.name,
+                        headImgUrl: response.data.data.headImageUrl,
+                        roleTypes: response.data.data.roleTypes,
+                    });
 
-                localStorage.setItem("userInfo", user);
-                localStorage.setItem("logintoken", response.data.data.token);
-                localStorage.setItem("userid", response.data.data.userId);
-                localStorage.setItem("phone", response.data.data.phone);
-                localStorage.setItem("email", response.data.data.email);
-                localStorage.setItem("headImageUrl", response.data.data.headImageUrl);
-                localStorage.setItem("nickname", response.data.data.nickname);
+                    localStorage.setItem("userInfo", user);
+                    localStorage.setItem("logintoken", response.data.data.token);
+                    localStorage.setItem("userid", response.data.data.userId);
+                    localStorage.setItem("phone", response.data.data.phone);
+                    localStorage.setItem("email", response.data.data.email);
+                    localStorage.setItem("headImageUrl", response.data.data.headImageUrl);
+                    localStorage.setItem("nickname", response.data.data.nickname);
 
-                this.$store.commit("setUserSession", user);
-                this.$store.commit("setToken", response.data.data.token);
+                    this.$store.commit("setUserSession", user);
+                    this.$store.commit("setToken", response.data.data.token);
 
-                // 来源为 AD 需要跳转到 URL 中的 custom_url
-                if (this.$route.query.hmcu == 'ad' && this.$route.query.custom_url) {
-                    window.location.href = this.$route.query.custom_url;
-                    return;
-                }
+                    // 来源为 AD 需要跳转到 URL 中的 custom_url
+                    if (this.$route.query.hmcu == 'ad' && this.$route.query.custom_url) {
+                        window.location.href = this.$route.query.custom_url;
+                        return;
+                    }
 
-                // OIDC 方式
-                if (this.$route.query.redirect_oidc) {
-                    // api.postJsonApi(this.$route.query.redirect_oidc)
-                    //     .then((response) => {
-                    //         if (response.data.code !== 200) {
-                    //             this.$bvToast.toast(response.data.msg, {
-                    //                 title: 'OIDC 授权失败', variant: 'danger', toaster: 'b-toaster-bottom-right'
-                    //             });
-                    //             this.loading = false;
-                    //             return;
-                    //         }
-                    //         this.$bvToast.toast(response.data.msg, {
-                    //             title: 'OIDC', variant: 'primary', toaster: 'b-toaster-bottom-right'
-                    //         });
-                    //         this.loading = false;
-                    //         return;
-                    //     })
-                    axios.post(
-                        this.$route.query.redirect_oidc,
-                        {},
-                        {
-                            headers: {
-                                token: localStorage.getItem('logintoken'),
-                                changeOrigin: true,
-                                'Access-Control-Allow-Credentials': true
+                    // OIDC 方式
+                    if (this.$route.query.redirect_oidc) {
+                        // api.postJsonApi(this.$route.query.redirect_oidc)
+                        //     .then((response) => {
+                        //         if (response.data.code !== 200) {
+                        //             this.$bvToast.toast(response.data.msg, {
+                        //                 title: 'OIDC 授权失败', variant: 'danger', toaster: 'b-toaster-bottom-right'
+                        //             });
+                        //             this.loading = false;
+                        //             return;
+                        //         }
+                        //         this.$bvToast.toast(response.data.msg, {
+                        //             title: 'OIDC', variant: 'primary', toaster: 'b-toaster-bottom-right'
+                        //         });
+                        //         this.loading = false;
+                        //         return;
+                        //     })
+                        // fetch(this.$route.query.redirect_oidc, {
+                        //     headers: {
+                        //         token: localStorage.getItem('logintoken'),
+                        //         'content-type': 'application/json'
+                        //     },
+                        //     method: 'POST',
+                        //     mode: 'cors',
+                        //     redirect: "follow"
+                        // })
+                        //     .then(res => {
+                        //         console.log(JSON.stringify(res.headers))
+                        //         if (res.type === "opaqueredirect") {
+                        //             // redirect to login page
+                        //             window.location.href = res.url;
+                        //         } else {
+                        //             // handle normally / pass on to next handler
+                        //         }
+                        //     })
+                        axios.post(
+                            this.$route.query.redirect_oidc,
+                            {},
+                            {
+                                headers: {
+                                    token: localStorage.getItem('logintoken'),
+                                    changeOrigin: true,
+                                    'Access-Control-Allow-Credentials': true
+                                }
                             }
-                        }
-                    ).then(response =>{
-                        if (response.data.code !== 200) {
+                        ).then(response =>{
+                            if (response.data.code !== 200) {
+                                this.$bvToast.toast(response.data.msg, {
+                                    title: 'OIDC 授权失败', variant: 'danger', toaster: 'b-toaster-bottom-right'
+                                });
+                                this.loading = false;
+                                return;
+                            }
+                            window.location.href = response.data.data.redirectTo
                             this.$bvToast.toast(response.data.msg, {
-                                title: 'OIDC 授权失败', variant: 'danger', toaster: 'b-toaster-bottom-right'
+                                title: 'OIDC', variant: 'primary', toaster: 'b-toaster-bottom-right'
                             });
                             this.loading = false;
                             return;
-                        }
-                        this.$bvToast.toast(response.data.msg, {
-                            title: 'OIDC', variant: 'primary', toaster: 'b-toaster-bottom-right'
-                        });
-                        this.loading = false;
-                        return;
-                    })
-                } else {
-                    // OAuth 方式
-                    if (this.redirect) {
-                        const opts = { path: this.redirectPath };
-                        if (this.redirectQuery) opts.query = this.redirectQuery;
-                        this.$router.push(opts);
+                        }).catch(err=>{
+                            console.log(err)
+                        })
                     } else {
-                        window.location.href = '/#/personalCenter';
+                        // OAuth 方式
+                        if (this.redirect) {
+                            const opts = { path: this.redirectPath };
+                            if (this.redirectQuery) opts.query = this.redirectQuery;
+                            this.$router.push(opts);
+                        } else {
+                            window.location.href = '/#/personalCenter';
+                        }
                     }
+                    this.loading = false;
+                } else {
+                    this.$bvToast.toast(response.data.msg, {
+                        title: '登录失败', variant: 'danger', toaster: 'b-toaster-bottom-right'
+                    });
                 }
                 this.loading = false;
-            } else {
-                this.$bvToast.toast(response.data.msg, {
+            })
+            .catch((error) => {
+                this.$bvToast.toast(error, {
                     title: '登录失败', variant: 'danger', toaster: 'b-toaster-bottom-right'
                 });
-            }
-            this.loading = false;
-        })
-        .catch((error) => {
-            this.$bvToast.toast(error, {
-                title: '登录失败', variant: 'danger', toaster: 'b-toaster-bottom-right'
+                this.loading = false;
             });
-            this.loading = false;
-        });
     },
     /*
      *  获取验证码图片
      */
     getCaptcha() {
+        console.log('login')
         this.captchaLoading = true;
         this.captchaToken = uuidv1();
         this.captcha = this.__API__.captcha.getImage(this.captchaToken);
