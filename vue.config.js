@@ -26,20 +26,30 @@ module.exports = {
         }
     },
     devServer: {
+        overlay: {                                  // 让浏览器 overlay 同时显示警告和错误
+            warnings: true,
+            errors: true
+        },
+        host: "localhost",
+        port: 8080,                                 // 端口号
+        open: false,                                // 配置后自动启动浏览器
+        hotOnly: true,                              // 热更新
         contentBase:path.join(__dirname, 'public'),
         proxy: {
             "/client": {
-                target: "http://127.0.0.1",
+                target: "http://test.openatom.cn",
                 changeOrigin: true,
-                ws:true,
+                ws: true,
+                secure: false,
                 // pathRewrite: {
                 //     "^/client": "/atom_services/openatom_client"
                 // }
             },
             "/uploads": {
-                target: "http://127.0.0.1",
+                target: "http://test.openatom.cn",
                 changeOrigin: true,
-                ws:true,
+                ws: true,
+                secure: false,
                 // pathRewrite: {
                 //     "^/client": "/atom_services/openatom_client"
                 // }

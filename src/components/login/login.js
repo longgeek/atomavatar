@@ -97,6 +97,7 @@ const methods = {
                         roleTypes: response.data.data.roleTypes,
                     });
 
+                    localStorage.setItem("user", user);
                     localStorage.setItem("userInfo", user);
                     localStorage.setItem("logintoken", response.data.data.token);
                     localStorage.setItem("userid", response.data.data.userId);
@@ -107,6 +108,9 @@ const methods = {
 
                     this.$store.commit("setUserSession", user);
                     this.$store.commit("setToken", response.data.data.token);
+
+                    // 如果有 next_url 参数，则直接跳转
+                    if (this.$route.query.next_url) window.location.href = decodeURIComponent(this.$route.query.next_url);
 
                     // 来源为 AD 需要跳转到 URL 中的 custom_url
                     if (this.$route.query.hmcu == 'ad' && this.$route.query.custom_url) {
@@ -205,7 +209,6 @@ const methods = {
      *  获取验证码图片
      */
     getCaptcha() {
-        console.log('login')
         this.captchaLoading = true;
         this.captchaToken = uuidv1();
         this.captcha = this.__API__.captcha.getImage(this.captchaToken);

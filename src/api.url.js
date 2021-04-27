@@ -19,6 +19,5 @@ export default {
         getPhoneCode:               ()      => { return API_URL + '/client/register/getPhoneCode' },
         registerByEmailCode:        ()      => { return API_URL + '/client/register/registerByEmailCode' },
         registerByPhoneCode:        ()      => { return API_URL + '/client/register/registerByPhoneCode' },
-    }
-
+    },
 }
