@@ -4,8 +4,8 @@ module.exports = {
         extract: true
     },
     productionSourceMap: process.env.NODE_ENV === 'production' ? false : true,
-    outputDir: process.env.VUE_APP_OUTPU_PATH,
-    publicPath: process.env.VUE_APP_CDN_PATH,
+    outputDir: process.env.VUE_APP_OUTPUT_PATH,
+    publicPath: process.env.VUE_APP_PUBLIC_PATH,
     assetsDir: "res",
     indexPath: "index.html",
     // 打包优化

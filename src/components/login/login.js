@@ -110,7 +110,10 @@ const methods = {
                     this.$store.commit("setToken", response.data.data.token);
 
                     // 如果有 next_url 参数，则直接跳转
-                    if (this.$route.query.next_url) window.location.href = decodeURIComponent(this.$route.query.next_url);
+                    if (this.$route.query.next_url) {
+                        window.location.href = decodeURIComponent(this.$route.query.next_url);
+                        return;
+                    }
 
                     // 来源为 AD 需要跳转到 URL 中的 custom_url
                     if (this.$route.query.hmcu == 'ad' && this.$route.query.custom_url) {
@@ -187,6 +190,11 @@ const methods = {
                             if (this.redirectQuery) opts.query = this.redirectQuery;
                             this.$router.push(opts);
                         } else {
+                            // 如果有 next_url 参数，则直接跳转
+                            if (this.$route.query.next_url) {
+                                window.location.href = decodeURIComponent(this.$route.query.next_url);
+                                return;
+                            }
                             window.location.href = '/#/personalCenter';
                         }
                     }
